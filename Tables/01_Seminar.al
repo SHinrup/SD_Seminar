@@ -1,7 +1,7 @@
 table 123456701 Seminar
 //CSD1.00 - 2018-06-04 - SHinrup
 {
-
+Caption = 'Seminar';    
     fields
     {
         field(10; "No."; Code[20])
