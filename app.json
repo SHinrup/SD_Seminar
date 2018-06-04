@@ -3,7 +3,7 @@
   "name": "ALProject1",
   "publisher": "SHinrup",
   "brief": "",
-  "description": "HelloWorldv2",
+  "description": "Seminar Solution",
   "version": "1.0.0.0",
   "compatibilityId": "1.0.0.0",
   "privacyStatement": "",
@@ -17,7 +17,7 @@
   "platform": "11.0.0.0",
   "application": "11.0.0.0",
   "idRange": {
-    "from": 50100,
-    "to": 50149
+    "from": 123456700,
+    "to": 123456799
   }
 }
