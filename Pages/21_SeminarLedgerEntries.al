@@ -7,6 +7,7 @@ page 123456721 "Seminar Ledger Entries"
     PageType = List;
     SourceTable = "Seminar Ledger Entry";
     Editable=false;
+    UsageCategory=Tasks;
 
     layout
     {

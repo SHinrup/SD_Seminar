@@ -52,7 +52,7 @@ table 123456710 "Seminar Registration Header"
                     Seminar.TestField("Gen. Prod. Posting Group");
                     Seminar.TestField("VAT Prod. Posting Group");
                     "Seminar Name" := Seminar.Name;
-                    "Duration":= Seminar."Seminar Duration";
+                    "Duration" := Seminar."Seminar Duration";
                     "Seminar Price" := Seminar."Seminar Price";
                     "Gen. Prod. Posting Group" := Seminar."Gen. Prod. Posting Group";
                     "VAT Prod. Posting Group" := Seminar."VAT Prod. Posting Group";
@@ -316,8 +316,8 @@ table 123456710 "Seminar Registration Header"
 
     trigger OnDelete();
     begin
-        IF (CurrFieldNo>0) then 
-           TestField(Status,Status::Canceled);
+        IF(CurrFieldNo > 0) then
+            TestField(Status, Status::Canceled);
         SeminarRegLine.RESET;
         SeminarRegLine.SETRANGE("Document No.", "No.");
         SeminarRegLine.SETRANGE(Registered, true);
@@ -349,7 +349,12 @@ table 123456710 "Seminar Registration Header"
             NoSeriesMgt.InitSeries(SeminarSetup."Seminar Registration Nos.", xRec."No. Series", 0D, "No.", "No. Series");
         end;
 
-      InitRecord;
+        InitRecord;
+        // >> Lab 8 1-1
+        if GetFilter("Seminar No.") <> '' then
+            if GetRangeMin("Seminar No.") = GetRangeMax("Seminar No.") then
+            Validate("Seminar No.", GetRangeMin("Seminar No."));
+        // << Lab 8 1-1
     end;
 
     local procedure InitRecord();
@@ -360,6 +365,7 @@ table 123456710 "Seminar Registration Header"
         SeminarSetup.GET;
         NoSeriesMgt.SetDefaultSeries("Posting No. Series", SeminarSetup."Posted Seminar Reg. Nos.");
     end;
+
     procedure AssistEdit(OldSeminarRegHeader: Record "Seminar Registration Header"): Boolean;
     begin
         with SeminarRegHeader do
