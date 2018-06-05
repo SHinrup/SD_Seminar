@@ -233,7 +233,7 @@ table 123456710 "Seminar Registration Header"
         Field(22; Comment; Boolean)
         {
             Caption = 'Comment';
-            CalcFormula = Exist ("Seminar Comment Line" where ("Table Name" = const ("Seminar Registration Header"),
+            CalcFormula = Exist ("Seminar Comment Line" where ("Table Name" = const ("Seminar Registration"),
                                                               "No." = Field ("No.")));
             Editable = false;
             FieldClass = FlowField;
@@ -349,7 +349,7 @@ table 123456710 "Seminar Registration Header"
             ERROR(Text006, SeminarCharge.TableCaption);
 
         SeminarCommentLine.Reset;
-        SeminarCommentLine.SetRange("Table Name", SeminarCommentLine."Table Name"::"Seminar Registration Header");
+        SeminarCommentLine.SetRange("Table Name", SeminarCommentLine."Table Name"::"Seminar Registration");
         SeminarCommentLine.SetRange("No.", "No.");
         SeminarCommentLine.deleteALL;
     end;

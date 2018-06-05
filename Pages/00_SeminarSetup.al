@@ -1,8 +1,10 @@
 page 123456700 "Seminar Setup"
+// CSD1.00 - 2018-01-01 - D. E. Veloper
+// Chapter 5 - Lab 3-4
 {
     PageType = Card;
     SourceTable = "Seminar Setup";
-    Caption = 'Seminar Setup';
+    Caption='Seminar Setup';
     InsertAllowed = false;
     DeleteAllowed = false;
     UsageCategory = Administration;
@@ -11,7 +13,7 @@ page 123456700 "Seminar Setup"
     {
         area(content)
         {
-            group("Numbering")
+            group(Numbering)
             {
                 field("Seminar Nos.";"Seminar Nos.")
                 {
@@ -26,25 +28,9 @@ page 123456700 "Seminar Setup"
         }
     }
 
-    actions
-    {
-        area(processing)
-        {
-            action(ActionName)
-            {
-                trigger OnAction();
-                begin
-                end;
-            }
-        }
-    }
-    
-    var
-        myInt : Integer;
-
-trigger Onopenpage();
+trigger OnOpenPage();
 begin
-    If not get then begin
+    if not get then begin
         init;
         insert;
     end;

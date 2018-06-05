@@ -12,7 +12,7 @@ begin
     ResLedgerEntry."CSD_Seminar Registration No.":=ResJournalLine."CSD_Seminar Registration No."; 
 end;
 [EventSubscriber(ObjectType::Page, 344, 'OnAfterNavigateFindRecords', '', true, true)]
-local procedure ExtendNavigateOnAfterNavigateFindRecords(var DocumentEntry : Record  "Document Entry";DocNoFilter : Text;PostingDateFilter : Text);
+local procedure ExtendNavigateOnAfterNavigateFindRecords(DocumentEntry : Record  "Document Entry";DocNoFilter : Text;PostingDateFilter : Text);
 var
   SeminarLedgerEntry : record "Seminar Ledger Entry";
   PostedSeminarRegHeader : record "Posted Seminar Reg. Header";
@@ -38,6 +38,7 @@ begin
       "Table Name" := COPYSTR(PostedSeminarRegHeader.TableCaption,1,MAXSTRLEN("Table Name"));
       "No. of Records" := DocNoOfRecords;
       Insert;
+      SelectLatestVersion;
     end;
   end;
 
@@ -55,7 +56,7 @@ begin
         NextEntryNo := 1;
       Init;
       "Entry No." := NextEntryNo;
-      "Table ID" := Database::"Seminar Ledger Entry";
+      "Table ID" := Database::"Posted Seminar Reg. Header";
       "Document Type" := 0;
       "Table Name" := COPYSTR(SeminarLedgerEntry.TableCaption,1,MAXSTRLEN("Table Name"));
       "No. of Records" := DocNoOfRecords;

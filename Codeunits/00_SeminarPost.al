@@ -43,7 +43,7 @@ codeunit 123456700 "Seminar-Post"
 
             Window.Update(1,StrSubstNo(Text004,"No.",PstdSeminarRegHeader."No."));
             
-            CopyCommentLines(SeminarCommentLine."Table Name"::"Seminar Registration Header", SeminarCommentLine."Table Name"::"Posted Seminar Reg. Header", "No.",PstdSeminarRegHeader."No.");
+            CopyCommentLines(SeminarCommentLine."Table Name"::"Seminar Registration", SeminarCommentLine."Table Name"::"Posted Seminar Registration", "No.",PstdSeminarRegHeader."No.");
             CopyCharges("No.",PstdSeminarRegHeader."No.");
 
             LineCount := 0; 
